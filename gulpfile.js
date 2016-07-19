@@ -151,4 +151,4 @@ gulp.task('build-html', ['clean-html'], function() {
     .pipe(gulp.dest(paths.build.base));
 });
 
-gulp.task('default', ['clean-all', 'build-js', 'build-css', 'build-images', 'build-HTML']);
+gulp.task('default', ['clean-all', 'build-js', 'build-css', 'build-images', 'build-html']);
