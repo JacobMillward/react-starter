@@ -31,7 +31,7 @@ The default gulp task cleans the entire directory, then builds and copies HTML, 
 * `gulp build-js` - Uses webpack to build the JS, and copy into the build directory. Transpiles JSX if necessary. ES2015 is supported.
 * `gulp build-css` - Copies CSS into the build directory. Minifies if production.
 * `gulp build-images` - Minifies images, and copies the minified images into the build directory.
-* `gulp build-HTML` - Copies HTML into the build directory.
+* `gulp build-html` - Copies HTML into the build directory.
 
 **Dev**
 

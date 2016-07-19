@@ -146,7 +146,7 @@ gulp.task('build-images', ['clean-images'], function() {
     .pipe(gulp.dest(paths.build.images));
 });
 
-gulp.task('build-HTML', ['clean-html'], function() {
+gulp.task('build-html', ['clean-html'], function() {
   return gulp.src(paths.src.base+'/**/*.html')
     .pipe(gulp.dest(paths.build.base));
 });
