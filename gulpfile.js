@@ -47,7 +47,7 @@ var paths = {
 }
 
 var webpackConfig = {
-  devtool: (isProduction() ? 'eval-source-map' : ''),
+  devtool: (isProduction() ? '' : 'eval-source-map'),
   entry: __dirname + '/' + paths.src.scripts + '/main.jsx',
   output: {
     path: __dirname + "/" + paths.build.scripts,
@@ -58,7 +58,7 @@ var webpackConfig = {
      loaders: [{
          test: /\.jsx?$/,
          exclude: /node-modules/,
-         loader: 'babel',
+         loader: 'babel-loader',
          query: {
            presets: (isProduction() ? [ 'es2015', 'react' ] : ['es2015','react','react-hmre'])
          }
