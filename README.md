@@ -32,7 +32,8 @@ The default gulp task cleans the entire directory, then builds and copies HTML, 
 * `gulp build-css` - Copies CSS into the build directory. Minifies if production.
 * `gulp build-images` - Minifies images, and copies the minified images into the build directory.
 * `gulp build-html` - Copies HTML into the build directory.
+* `gulp watch` - Watches for changes to CSS/JS/HTML and rebuilds
 
 **Dev**
 
-* `gulp webpack-server` - Runs webpack-dev-server, and hot swaps out changes to any JS or JSX code.
+* `gulp serve` - Runs webpack-dev-server, watches for changes to any assets, and rebuilds if needed.

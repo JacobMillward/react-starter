@@ -120,7 +120,7 @@ gulp.task('build-js', ['clean-scripts'], function(done) {
   }
 });
 
-gulp.task('webpack-server', ['default'], function(){
+gulp.task('serve', ['watch'], function(){
   new webpackDevServer(webpack(webpackConfig), {
     publicPath: paths.build.base,
 		stats: {
@@ -134,21 +134,32 @@ gulp.task('webpack-server', ['default'], function(){
     });
 });
 
-gulp.task('build-css', ['clean-css'], function() {
+function buildCSS() {
   return gulp.src(paths.src.css + '/**/*.css')
     .pipe(gulpIf(isProduction(), cleanCSS()))
     .pipe(gulp.dest(paths.build.css));
-});
+}
 
-gulp.task('build-images', ['clean-images'], function() {
+function buildImages() {
   return gulp.src(paths.src.images + '/**/*')
     .pipe(imageMin())
     .pipe(gulp.dest(paths.build.images));
-});
+}
 
-gulp.task('build-html', ['clean-html'], function() {
+function buildHtml() {
   return gulp.src(paths.src.base+'/**/*.html')
     .pipe(gulp.dest(paths.build.base));
+}
+gulp.task('build-css', ['clean-css'], buildCSS);
+
+gulp.task('build-images', ['clean-images'], buildImages);
+
+gulp.task('build-html', ['clean-html'], buildHtml);
+
+gulp.task('watch', function(){
+  gulp.watch(paths.src.css+'/**/*.css',['build-css']);
+  gulp.watch(paths.src.images+'/**/*',['build-images']);
+  gulp.watch(paths.src.base+'/**/*.html',['build-html']);
 });
 
 gulp.task('default', ['clean-all', 'build-js', 'build-css', 'build-images', 'build-html']);
