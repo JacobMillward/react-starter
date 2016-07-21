@@ -60,7 +60,7 @@ var webpackConfig = {
          exclude: /node-modules/,
          loader: 'babel-loader',
          query: {
-           presets: (isProduction() ? [ 'es2015', 'react' ] : ['es2015','react','react-hmre'])
+           presets: [ 'es2015', 'react' ]
          }
        }]
    },
