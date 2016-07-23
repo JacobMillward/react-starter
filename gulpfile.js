@@ -66,7 +66,8 @@ var webpackConfig = {
    },
 
    devServer: {
-    contentBase: __dirname + "/" + paths.build.scripts,
+    contentBase: "./" + paths.build.base,
+    publicPath: "./" + paths.build.base,
     port: '80',
     colors: true,
     historyApiFallback: true,
@@ -120,13 +121,9 @@ gulp.task('build-js', ['clean-scripts'], function(done) {
   }
 });
 
-gulp.task('serve', ['watch'], function(){
-  new webpackDevServer(webpack(webpackConfig), {
-    publicPath: paths.build.base,
-		stats: {
-			colors: true
-		}
-	}).listen(8080, "localhost", function(err) {
+gulp.task('serve', ['watch','build-css', 'build-html', 'build-images', 'build-js'], function(){
+  new webpackDevServer(webpack(webpackConfig))
+    .listen(8080, "localhost", function(err) {
         if(err) throw new gutil.PluginError("webpack-dev-server", err);
         // Server listening
         gutil.log("[webpack-dev-server]", "http://localhost:8080/webpack-dev-server/index.html");
